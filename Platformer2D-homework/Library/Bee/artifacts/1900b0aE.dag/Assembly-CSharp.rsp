@@ -386,9 +386,10 @@
 -analyzer:"C:/Program Files/2022.3.4f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"C:/Program Files/2022.3.4f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/Scripts/DiamondSpawner/Diamond.cs"
-"Assets/Scripts/DiamondSpawner/DiamondController.cs"
 "Assets/Scripts/DiamondSpawner/DiamondSpawner.cs"
 "Assets/Scripts/Enemies/EnemyMover.cs"
+"Assets/Scripts/Player/CheckHardSurface.cs"
+"Assets/Scripts/Player/DiamondCollection.cs"
 "Assets/Scripts/Player/PlayerAnimatorData.cs"
 "Assets/Scripts/Player/PlayerMover.cs"
 -langversion:9.0

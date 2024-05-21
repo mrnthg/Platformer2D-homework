@@ -4926,7 +4926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ba215e7f34091645bc8a320cfc4efbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _diamondPrefabs: {fileID: 7231562416249858432, guid: 80194d3e04d054d47bfe2d1a88cac9f6, type: 3}
+  _diamondPrefab: {fileID: 7231562416249858432, guid: 80194d3e04d054d47bfe2d1a88cac9f6, type: 3}
   _pointsSpawn:
   - {fileID: 1521479496}
   - {fileID: 1374104407}
@@ -5918,6 +5918,8 @@ GameObject:
   - component: {fileID: 2099439369}
   - component: {fileID: 2099439368}
   - component: {fileID: 2099439371}
+  - component: {fileID: 2099439373}
+  - component: {fileID: 2099439374}
   - component: {fileID: 2099439372}
   m_Layer: 0
   m_Name: Player
@@ -6090,6 +6092,30 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2099439373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099439366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da5ceeed4ceec54cbca14e8832fec3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2099439374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099439366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7d8384fbd8c0b4448e78231b8bade3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2112888532
 GameObject:
   m_ObjectHideFlags: 0

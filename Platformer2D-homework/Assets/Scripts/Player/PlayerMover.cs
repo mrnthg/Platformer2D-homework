@@ -8,42 +8,21 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _jumpForce;
 
-    private RaycastHit2D _hit;
-    private string _layerMask = "HardSurface";
     private Animator _playerAnimation;
     private Rigidbody2D _playerRigidbody;
-    private bool _isHardSurface;
-    private float _rayDistance = 0.85f;
-  
+    private CheckHardSurface _checkHardSurface;
+
     private void Start()
     {
         _playerAnimation = GetComponent<Animator>();
         _playerRigidbody = GetComponent<Rigidbody2D>();
+        _checkHardSurface = GetComponent<CheckHardSurface>();
     }
 
     private void Update()
     {        
         Move();
         Jump();
-        GroundCheck();
-    }
-
-    private void GroundCheck()
-    {
-        _hit = Physics2D.Raycast(transform.position, Vector2.down, _rayDistance, LayerMask.GetMask(_layerMask));
-
-        if (_hit.collider != null)
-        {
-            _isHardSurface = true;
-            _playerAnimation.SetBool(PlayerAnimatorData.Parameters.IsJump, false);
-        }
-        else
-        {
-            _isHardSurface = false;
-            _playerAnimation.SetBool(PlayerAnimatorData.Parameters.IsJump, true);
-        }  
-
-        Debug.DrawRay(transform.position, Vector2.down * _rayDistance, Color.red);
     }
 
     private void Move()
@@ -58,7 +37,7 @@ public class PlayerMover : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetKeyDown(Space) && _isHardSurface)
+        if (Input.GetKeyDown(Space) && _checkHardSurface.IsHardSurface)
         {         
             _playerRigidbody.velocity = new Vector2(_playerRigidbody.velocity.x, _jumpForce);
         }
