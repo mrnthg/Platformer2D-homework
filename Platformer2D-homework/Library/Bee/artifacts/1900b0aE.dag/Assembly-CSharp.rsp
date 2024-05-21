@@ -389,7 +389,7 @@
 "Assets/Scripts/DiamondSpawner/DiamondController.cs"
 "Assets/Scripts/DiamondSpawner/DiamondSpawner.cs"
 "Assets/Scripts/Enemies/EnemyMover.cs"
-"Assets/Scripts/Player/JumpChecker.cs"
+"Assets/Scripts/Player/PlayerAnimatorData.cs"
 "Assets/Scripts/Player/PlayerMover.cs"
 -langversion:9.0
 

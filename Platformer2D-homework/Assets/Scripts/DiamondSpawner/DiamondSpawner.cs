@@ -6,7 +6,7 @@ public class DiamondSpawner : MonoBehaviour
     [SerializeField] private Diamond _diamondPrefabs;
     [SerializeField] private List<Transform> _pointsSpawn = new List<Transform>();
   
-    void Start()
+    private void Start()
     {
         foreach (Transform pointSpawn in _pointsSpawn)
         {

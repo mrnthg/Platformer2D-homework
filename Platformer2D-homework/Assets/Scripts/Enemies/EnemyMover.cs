@@ -18,14 +18,13 @@ public class EnemyMover : MonoBehaviour
         if (Vector2.Distance(transform.position, _patrollimgPoints[_currentPoint].position) <= _inaccuracyPosition)
         {
             _currentPoint = (_currentPoint + 1) % _patrollimgPoints.Length;
+            Flip();
         }
 
-        transform.position = Vector2.MoveTowards(transform.position, _patrollimgPoints[_currentPoint].position, _moveSpeed * Time.deltaTime);
-        
-        FlipEnemy();
+        transform.position = Vector2.MoveTowards(transform.position, _patrollimgPoints[_currentPoint].position, _moveSpeed * Time.deltaTime);      
     }
 
-    private void FlipEnemy()
+    private void Flip()
     {
         if (transform.position.x > _patrollimgPoints[_currentPoint].position.x)
         {
