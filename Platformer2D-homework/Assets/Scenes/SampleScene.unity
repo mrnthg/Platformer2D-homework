@@ -5228,6 +5228,7 @@ GameObject:
   - component: {fileID: 1472441199}
   - component: {fileID: 1472441202}
   - component: {fileID: 1472441203}
+  - component: {fileID: 1472441205}
   - component: {fileID: 1472441204}
   m_Layer: 7
   m_Name: Bear
@@ -5427,6 +5428,19 @@ MonoBehaviour:
     m_Bits: 256
   _radiusAttack: 0.7
   _attackCoolDown: 2
+--- !u!114 &1472441205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472441197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc05d68c5094684294a874e031f0fc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthOnScreen: {fileID: 1147669069}
 --- !u!1 &1521479495
 GameObject:
   m_ObjectHideFlags: 0
@@ -6598,6 +6612,7 @@ GameObject:
   - component: {fileID: 2099439369}
   - component: {fileID: 2099439368}
   - component: {fileID: 2099439376}
+  - component: {fileID: 2099439377}
   - component: {fileID: 2099439375}
   - component: {fileID: 2099439373}
   - component: {fileID: 2099439374}
@@ -6819,6 +6834,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 5
   _jumpForce: 12
+--- !u!114 &2099439377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099439366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d5212be5fba9554a9d298fe2b31ef45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthOnScreen: {fileID: 1822643773}
 --- !u!1 &2112888532
 GameObject:
   m_ObjectHideFlags: 0

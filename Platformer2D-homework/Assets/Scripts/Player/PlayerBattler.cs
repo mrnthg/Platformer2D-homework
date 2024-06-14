@@ -19,15 +19,16 @@ public class PlayerBattler : MonoBehaviour
     private float _health;
     private bool _isAttack = false;
 
+    public event Action<float> changeHealth;
+
     private void Start()
     {
         _health = _maxHealth;
+        ChangeHealth();
     }
 
     private void Update()
     {
-        _healthOnScreen.text = ("HP: " + _health.ToString());
-
         if (Input.GetKeyDown(KeyCode.E))
         {
             TakeDamage(20);
@@ -39,12 +40,19 @@ public class PlayerBattler : MonoBehaviour
         }
     }
 
+    private void ChangeHealth()
+    {
+        changeHealth?.Invoke(_health);
+    }
+
     public void TakeDamage(float damage)
     {
         _health -= damage * ((_maxArmorPercentage - _armor) / _maxArmorPercentage);
         
         if (_health < 0)
             _health = 0;
+
+        ChangeHealth();
     }
 
     public void TakeHealthy(float health)
@@ -53,6 +61,8 @@ public class PlayerBattler : MonoBehaviour
 
         if (_health > _maxHealth)
             _health = _maxHealth;
+
+        ChangeHealth();
     }
 
     private void Attack()

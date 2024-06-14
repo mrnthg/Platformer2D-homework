@@ -19,19 +19,25 @@ public class EnemyBattler : MonoBehaviour
     private float _health;
     private bool _isAttack = false;
 
+    public event Action<float> changeHealth;
+
     private void Start()
     {       
         _health = _maxHealth;
+        ChangeHealth();
     }
 
     private void Update()
     {
-        _healthOnScreen.text = ("HP: " + _health.ToString());
-
         if (_isAttack == false && GetComponent<EnemyPartol>().IsPursuit == true)
         {
             Attack();
         }       
+    }
+
+    private void ChangeHealth()
+    {
+        changeHealth?.Invoke(_health);
     }
 
     public void TakeDamage(float damage)
@@ -40,6 +46,8 @@ public class EnemyBattler : MonoBehaviour
 
         if (_health < 0)
             _health = 0;
+
+        ChangeHealth();
     }
 
     private void Attack()

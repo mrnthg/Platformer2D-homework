@@ -2,6 +2,13 @@ using UnityEngine;
 
 public class ItemCollector : MonoBehaviour
 {
+    private PlayerBattler _playerBattler;
+
+    private void Awake()
+    {
+        _playerBattler = GetComponent<PlayerBattler>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent(out Diamond diamondComponent))
@@ -11,7 +18,7 @@ public class ItemCollector : MonoBehaviour
 
         if (collision.gameObject.TryGetComponent(out Cherry cherryComponent))
         {
-            GetComponent<PlayerBattler>().TakeHealthy(cherryComponent.HealthRrestore);
+            _playerBattler.TakeHealthy(cherryComponent.HealthRrestore);
             Destroy(cherryComponent.gameObject);
         }
     }

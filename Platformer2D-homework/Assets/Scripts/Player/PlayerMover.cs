@@ -2,21 +2,21 @@ using UnityEngine;
 
 public class PlayerMover : MonoBehaviour
 {
-    private readonly string HorizontalMovement = "Horizontal";
-    private readonly string Space = "space";
+    private readonly string _horizontalMovement = "Horizontal";
+    private readonly string _space = "space";
 
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _jumpForce;
 
     private Animator _playerAnimation;
     private Rigidbody2D _playerRigidbody;
-    private CheckHardSurface _checkHardSurface;
+    private InspectorHardSurface _checkHardSurface;
 
     private void Start()
     {
         _playerAnimation = GetComponent<Animator>();
         _playerRigidbody = GetComponent<Rigidbody2D>();
-        _checkHardSurface = GetComponent<CheckHardSurface>();
+        _checkHardSurface = GetComponent<InspectorHardSurface>();
     }
 
     private void Update()
@@ -27,7 +27,7 @@ public class PlayerMover : MonoBehaviour
 
     private void Move()
     {
-        float horizontalImput = Input.GetAxis(HorizontalMovement);
+        float horizontalImput = Input.GetAxis(_horizontalMovement);
         _playerAnimation.SetFloat(PlayerAnimatorData.Parameters.Speed, Mathf.Abs(horizontalImput));
 
         Flip(horizontalImput);
@@ -37,7 +37,7 @@ public class PlayerMover : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetKeyDown(Space) && _checkHardSurface.IsHardSurface)
+        if (Input.GetKeyDown(_space) && _checkHardSurface.IsHardSurface)
         {         
             _playerRigidbody.velocity = new Vector2(_playerRigidbody.velocity.x, _jumpForce);
         }
