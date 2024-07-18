@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Animator), typeof(Rigidbody2D), typeof(InspectorHardSurface))]
 public class PlayerMover : MonoBehaviour
 {
     private readonly string _horizontalMovement = "Horizontal";
@@ -11,6 +12,8 @@ public class PlayerMover : MonoBehaviour
     private Animator _playerAnimation;
     private Rigidbody2D _playerRigidbody;
     private InspectorHardSurface _checkHardSurface;
+    private float horizontalImput = 0f;
+    private bool _isJump = false;
 
     private void Start()
     {
@@ -20,14 +23,23 @@ public class PlayerMover : MonoBehaviour
     }
 
     private void Update()
-    {        
+    {
+        horizontalImput = Input.GetAxis(_horizontalMovement);
+
+        if (Input.GetKeyDown(_space) && _checkHardSurface.IsHardSurface)
+        {
+            _isJump = true;
+        }
+    }
+
+    private void FixedUpdate()
+    {
         Move();
         Jump();
     }
 
     private void Move()
-    {
-        float horizontalImput = Input.GetAxis(_horizontalMovement);
+    {        
         _playerAnimation.SetFloat(PlayerAnimatorData.Parameters.Speed, Mathf.Abs(horizontalImput));
 
         Flip(horizontalImput);
@@ -37,9 +49,10 @@ public class PlayerMover : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetKeyDown(_space) && _checkHardSurface.IsHardSurface)
+        if (_isJump)
         {         
             _playerRigidbody.velocity = new Vector2(_playerRigidbody.velocity.x, _jumpForce);
+            _isJump = false;
         }
     }
 

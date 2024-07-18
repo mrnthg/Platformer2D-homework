@@ -4,7 +4,6 @@ public class EnemyPartol : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed;
     [SerializeField] private Transform[] _patrollingPoints;
-    [SerializeField] private HealthBarEnemy _healthBar;
     [SerializeField] private float _pursuitDistance;
 
     private int _currentPoint;
@@ -18,11 +17,13 @@ public class EnemyPartol : MonoBehaviour
     private void Start()
     {
         if (_player == null)
-            _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();     
+        {
+            _player = FindObjectOfType<PlayerMover>().GetComponent<Transform>();         
+        }               
     }
 
-    private void FixedUpdate()
-    {      
+    private void Update()
+    {
         if (Vector2.Distance(transform.position, _player.position) < _pursuitDistance)
         {
             _isPartol = false;
@@ -34,7 +35,10 @@ public class EnemyPartol : MonoBehaviour
             _isPursuit = false;
             _isPartol = true;
         }
+    }
 
+    private void FixedUpdate()
+    {    
         if (_isPartol == true)
         {
             Patrol();
@@ -49,7 +53,7 @@ public class EnemyPartol : MonoBehaviour
     {
         if (Vector2.Distance(transform.position, _patrollingPoints[_currentPoint].position) <= _inaccuracyPosition)
         {
-            _currentPoint = (_currentPoint + 1) % _patrollingPoints.Length;            
+            _currentPoint = (++_currentPoint) % _patrollingPoints.Length;            
         }
 
         Flip(_patrollingPoints[_currentPoint]);
@@ -67,12 +71,10 @@ public class EnemyPartol : MonoBehaviour
         if (transform.position.x > target.position.x)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
-            _healthBar.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
         else if (transform.position.x < target.position.x)
         {
-            transform.rotation = Quaternion.Euler(0, -180, 0);
-            _healthBar.transform.rotation = Quaternion.Euler(0, 0, 0);
+            transform.rotation = Quaternion.Euler(0, -180, 0);        
         }        
     }
 }

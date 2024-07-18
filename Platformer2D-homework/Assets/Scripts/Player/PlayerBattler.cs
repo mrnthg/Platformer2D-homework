@@ -1,78 +1,36 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(PlayerBattler))]
+[RequireComponent(typeof(PlayerBattler), typeof(HealthSystem))]
 public class PlayerBattler : MonoBehaviour
 {
     [SerializeField] private Text _healthOnScreen;
     [SerializeField, Min(1)] private float _damage;
-    [SerializeField, Range(1f, 20f)] private float _armor;
     [SerializeField] private Transform _attackPosition;
-    [SerializeField] private LayerMask _enemy;
+    [SerializeField] private LayerMask _layerMaskEnemy;
     [SerializeField] private float _radiusAttack;
     [SerializeField] private float _attackCoolDown;
 
-    private float _maxArmorPercentage = 100;
-    private float _maxHealth = 100;
-    private float _health;
     private bool _isAttack = false;
-
-    public event Action<float> changeHealth;
-
-    private void Start()
-    {
-        _health = _maxHealth;
-        ChangeHealth();
-    }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            TakeDamage(20);
-        }
-
         if (Input.GetMouseButton(0) && _isAttack == false)
         {
-            Attack();            
+            Attack();
+            Debug.Log("Я наношу удар"); 
         }
-    }
-
-    private void ChangeHealth()
-    {
-        changeHealth?.Invoke(_health);
-    }
-
-    public void TakeDamage(float damage)
-    {
-        _health -= damage * ((_maxArmorPercentage - _armor) / _maxArmorPercentage);
-        
-        if (_health < 0)
-            _health = 0;
-
-        ChangeHealth();
-    }
-
-    public void TakeHealthy(float health)
-    {
-        _health += health;
-
-        if (_health > _maxHealth)
-            _health = _maxHealth;
-
-        ChangeHealth();
     }
 
     private void Attack()
     {
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(_attackPosition.position, _radiusAttack, _enemy);
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(_attackPosition.position, _radiusAttack, _layerMaskEnemy);
         _isAttack = true;
 
         for (int i = 0; i < enemies.Length; i++)
         {
-            enemies[i].GetComponent<EnemyBattler>().TakeDamage(_damage);
+            enemies[i].GetComponent<HealthSystem>().TakeDamage(_damage);
         }
 
         StartCoroutine(AttackCoolDown());
