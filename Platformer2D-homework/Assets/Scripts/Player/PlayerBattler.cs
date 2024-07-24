@@ -13,6 +13,12 @@ public class PlayerBattler : MonoBehaviour
     [SerializeField] private float _attackCoolDown;
 
     private bool _isAttack = false;
+    private HealthSystem _healthSystem;
+
+    private void Start()
+    {
+        _healthSystem = GetComponent<HealthSystem>();
+    }
 
     private void Update()
     {
@@ -20,6 +26,11 @@ public class PlayerBattler : MonoBehaviour
         {
             Attack();
             Debug.Log("Я наношу удар"); 
+        }
+
+        if (_healthSystem.Health == 0)
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -30,7 +41,10 @@ public class PlayerBattler : MonoBehaviour
 
         for (int i = 0; i < enemies.Length; i++)
         {
-            enemies[i].GetComponent<HealthSystem>().TakeDamage(_damage);
+            if (enemies[i].TryGetComponent(out HealthSystem healthSystem))
+            {
+                healthSystem.TakeDamage(_damage);
+            }
         }
 
         StartCoroutine(AttackCoolDown());

@@ -5044,6 +5044,9 @@ GameObject:
   - component: {fileID: 1472441200}
   - component: {fileID: 1472441199}
   - component: {fileID: 1472441202}
+  - component: {fileID: 1472441206}
+  - component: {fileID: 1472441207}
+  - component: {fileID: 1472441208}
   - component: {fileID: 1472441203}
   - component: {fileID: 1472441205}
   - component: {fileID: 1472441204}
@@ -5200,8 +5203,6 @@ MonoBehaviour:
   _patrollingPoints:
   - {fileID: 1812959921}
   - {fileID: 1874761631}
-  _healthBar: {fileID: 0}
-  _pursuitDistance: 5
 --- !u!95 &1472441203
 Animator:
   serializedVersion: 5
@@ -5253,6 +5254,44 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d063723bb5e64e448a168ddd7679432e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1472441206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472441197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1612f32a5e5b725408edf78fd4b55e60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1472441207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472441197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73a39b95f280d244b88e4a627aa2516e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveSpeedPursuit: 3.2
+  _pursuitDistance: 12
+--- !u!114 &1472441208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472441197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6cc02313eab8454ba651cc5c7cacd39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1521479495

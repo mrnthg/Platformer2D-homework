@@ -42,7 +42,7 @@ public class PlayerMover : MonoBehaviour
     {        
         _playerAnimation.SetFloat(PlayerAnimatorData.Parameters.Speed, Mathf.Abs(horizontalImput));
 
-        Flip(horizontalImput);
+        FlipPlayerRotation(horizontalImput);
 
         _playerRigidbody.velocity = new Vector2(horizontalImput * _moveSpeed, _playerRigidbody.velocity.y);
     }
@@ -56,7 +56,7 @@ public class PlayerMover : MonoBehaviour
         }
     }
 
-    private void Flip(float value)
+    private void FlipPlayerRotation(float value)
     {
         if (value > 0)
         {

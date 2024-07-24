@@ -1,17 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DiamondSpawner : MonoBehaviour
+public class DiamondSpawner : Spawner
 {
     [SerializeField] private Diamond _diamondPrefab;
     [SerializeField] private List<Transform> _pointsSpawn = new List<Transform>();
   
     private void Start()
     {
-        foreach (Transform pointSpawn in _pointsSpawn)
-        {
-            Diamond diamond = Instantiate(_diamondPrefab, pointSpawn.position, Quaternion.identity);
-            diamond.transform.SetParent(transform);
-        }
+        SpawnObject(_diamondPrefab.gameObject, _pointsSpawn);
     }
 }

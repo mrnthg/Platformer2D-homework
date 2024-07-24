@@ -4,35 +4,32 @@ public class EnemyPartol : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed;
     [SerializeField] private Transform[] _patrollingPoints;
-    [SerializeField] private float _pursuitDistance;
 
     private int _currentPoint;
     private float _inaccuracyPosition = 0.6f;
-    private Transform _player;
+    private DetectorPlayer _detectorPlayer;
+    private EnemyPursuit _enemyPursuit;
+    private FlipObjectRotation _flipObjectRotation;
     private bool _isPartol = true;
-    private bool _isPursuit = false;
-
-    public bool IsPursuit => _isPursuit;
 
     private void Start()
     {
-        if (_player == null)
-        {
-            _player = FindObjectOfType<PlayerMover>().GetComponent<Transform>();         
-        }               
+        _detectorPlayer = GetComponent<DetectorPlayer>();
+        _enemyPursuit = GetComponent<EnemyPursuit>();
+        _flipObjectRotation = GetComponent<FlipObjectRotation>();
     }
 
     private void Update()
     {
-        if (Vector2.Distance(transform.position, _player.position) < _pursuitDistance)
+        if ((transform.position - _detectorPlayer.Detection().position).sqrMagnitude < _enemyPursuit.PursuitDistance)
         {
             _isPartol = false;
-            _isPursuit = true;
+            _enemyPursuit.PursuitChangeStatus(true);
         }
 
-        if (Vector2.Distance(transform.position, _player.position) > _pursuitDistance)
+        if ((transform.position - _detectorPlayer.Detection().position).sqrMagnitude > _enemyPursuit.PursuitDistance)
         {
-            _isPursuit = false;
+            _enemyPursuit.PursuitChangeStatus(false);
             _isPartol = true;
         }
     }
@@ -43,38 +40,20 @@ public class EnemyPartol : MonoBehaviour
         {
             Patrol();
         }
-        else if (_isPursuit == true)
+        else if (_enemyPursuit.IsPursuit == true)
         {
-            Pursuit();
+            _enemyPursuit.Pursuit();
         }
     }
 
     private void Patrol()
     {
-        if (Vector2.Distance(transform.position, _patrollingPoints[_currentPoint].position) <= _inaccuracyPosition)
+        if ((transform.position - _patrollingPoints[_currentPoint].position).sqrMagnitude <= _inaccuracyPosition)
         {
             _currentPoint = (++_currentPoint) % _patrollingPoints.Length;            
         }
 
-        Flip(_patrollingPoints[_currentPoint]);
+        _flipObjectRotation.Flip(_patrollingPoints[_currentPoint]);
         transform.position = Vector2.MoveTowards(transform.position, _patrollingPoints[_currentPoint].position, _moveSpeed * Time.deltaTime); 
-    }
-
-    private void Pursuit()
-    {       
-        Flip(_player);
-        transform.position = Vector2.MoveTowards(transform.position, _player.position, _moveSpeed * Time.deltaTime);
-    }
-
-    private void Flip(Transform target)
-    {
-        if (transform.position.x > target.position.x)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
-        else if (transform.position.x < target.position.x)
-        {
-            transform.rotation = Quaternion.Euler(0, -180, 0);        
-        }        
     }
 }

@@ -13,18 +13,18 @@ public class EnemyBattler : MonoBehaviour
     [SerializeField] private float _attackCoolDown;
 
     private bool _isAttack = false;
-    private EnemyPartol _enemyPartol;
+    private EnemyPursuit _enemyPursuit;
     private HealthSystem _healthSystem;
 
     private void Start()
     {
-        _enemyPartol = GetComponent<EnemyPartol>();
+        _enemyPursuit = GetComponent<EnemyPursuit>();
         _healthSystem = GetComponent<HealthSystem>();
     }
 
     private void Update()
     {
-        if (_isAttack == false && _enemyPartol.IsPursuit == true)
+        if (_isAttack == false && _enemyPursuit.IsPursuit == true)
         {
             Attack();
             Debug.Log("Враг наносит удар");
@@ -42,8 +42,11 @@ public class EnemyBattler : MonoBehaviour
         Collider2D[] players = Physics2D.OverlapCircleAll(_attackPosition.position, _radiusAttack, _layerMaskPlayer);
 
         for (int i = 0; i < players.Length; i++)
-        {
-            players[i].GetComponent<HealthSystem>().TakeDamage(_damage);
+        {        
+            if (players[i].TryGetComponent(out HealthSystem healthSystem))
+            {
+                healthSystem.TakeDamage(_damage);
+            }
         }
 
         StartCoroutine(AttackCoolDown());
