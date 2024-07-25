@@ -1,48 +1,52 @@
+using System;
 using UnityEngine;
 
 public class EnemyPartol : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed;
     [SerializeField] private Transform[] _patrollingPoints;
+    [SerializeField] private float _detectedDistance;
 
     private int _currentPoint;
     private float _inaccuracyPosition = 0.6f;
     private DetectorPlayer _detectorPlayer;
+    private Transform _playerPosition;
     private EnemyPursuit _enemyPursuit;
     private FlipObjectRotation _flipObjectRotation;
     private bool _isPartol = true;
+
+    public event Action OnPatrol;
 
     private void Start()
     {
         _detectorPlayer = GetComponent<DetectorPlayer>();
         _enemyPursuit = GetComponent<EnemyPursuit>();
-        _flipObjectRotation = GetComponent<FlipObjectRotation>();
+        _flipObjectRotation = GetComponent<FlipObjectRotation>(); 
+
+         _playerPosition = _detectorPlayer.Detection();
     }
 
     private void Update()
     {
-        if ((transform.position - _detectorPlayer.Detection().position).sqrMagnitude < _enemyPursuit.PursuitDistance)
+        _detectorPlayer.Detection(); 
+
+        if (_detectorPlayer.IsDetected)
         {
             _isPartol = false;
-            _enemyPursuit.PursuitChangeStatus(true);
+            _enemyPursuit.PursuitStatusTrue();
         }
-
-        if ((transform.position - _detectorPlayer.Detection().position).sqrMagnitude > _enemyPursuit.PursuitDistance)
+        else
         {
-            _enemyPursuit.PursuitChangeStatus(false);
+            _enemyPursuit.PursuitStatusFalse();
             _isPartol = true;
         }
     }
 
     private void FixedUpdate()
     {    
-        if (_isPartol == true)
+        if (_isPartol)
         {
             Patrol();
-        }
-        else if (_enemyPursuit.IsPursuit == true)
-        {
-            _enemyPursuit.Pursuit();
         }
     }
 

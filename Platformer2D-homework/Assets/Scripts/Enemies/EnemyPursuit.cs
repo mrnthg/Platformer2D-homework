@@ -5,19 +5,25 @@ using UnityEngine;
 public class EnemyPursuit : MonoBehaviour
 {
     [SerializeField] private float _moveSpeedPursuit;
-    [SerializeField] private float _pursuitDistance;
 
     private DetectorPlayer _detectorPlayer;
     private FlipObjectRotation _flipObjectRotation;
     private bool _isPursuit = false;
 
     public bool IsPursuit => _isPursuit;
-    public float PursuitDistance => _pursuitDistance;
 
     private void Start()
     {
         _detectorPlayer = GetComponent<DetectorPlayer>();
         _flipObjectRotation = GetComponent<FlipObjectRotation>();
+    }
+
+    private void FixedUpdate()
+    {
+        if (_isPursuit)
+        {
+            Pursuit();
+        }
     }
 
     public void Pursuit()
@@ -26,8 +32,13 @@ public class EnemyPursuit : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, _detectorPlayer.Detection().position, _moveSpeedPursuit * Time.deltaTime);
     }
 
-    public void PursuitChangeStatus(bool isPursuit)
+    public void PursuitStatusTrue()
     {
-        _isPursuit = isPursuit;
+        _isPursuit = true;
+    }
+
+    public void PursuitStatusFalse()
+    {
+        _isPursuit = false;
     }
 }

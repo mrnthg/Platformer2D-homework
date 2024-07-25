@@ -5203,6 +5203,7 @@ MonoBehaviour:
   _patrollingPoints:
   - {fileID: 1812959921}
   - {fileID: 1874761631}
+  _detectedDistance: 12
 --- !u!95 &1472441203
 Animator:
   serializedVersion: 5
@@ -5268,6 +5269,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1612f32a5e5b725408edf78fd4b55e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _detectedHorizontalDistance: 10
+  _detectedVerticalDistance: 3
+  _layerMaskPlayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &1472441207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5281,7 +5287,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeedPursuit: 3.2
-  _pursuitDistance: 12
 --- !u!114 &1472441208
 MonoBehaviour:
   m_ObjectHideFlags: 0
