@@ -45,7 +45,7 @@ public class EnemyBattler : MonoBehaviour
         {        
             if (players[i].TryGetComponent(out HealthSystem healthSystem))
             {
-                healthSystem.TakeDamage(_damage);
+                healthSystem.SubtractHealthPoint(_damage);
             }
         }
 

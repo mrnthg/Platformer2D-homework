@@ -18,7 +18,7 @@ public class ItemCollector : MonoBehaviour
 
         if (collision.gameObject.TryGetComponent(out Cherry cherryComponent))
         {
-            _healthSystem.TakeHealthy(cherryComponent.HealthRrestore);
+            _healthSystem.AddHealthPoint(cherryComponent.HealthRrestore);
             Destroy(cherryComponent.gameObject);
         }
     }

@@ -395,6 +395,8 @@
 "Assets/Scripts/Enemies/EnemyPursuit.cs"
 "Assets/Scripts/Enemies/FlipObjectRotation.cs"
 "Assets/Scripts/HealthSystem/HealthSystem.cs"
+"Assets/Scripts/HealthSystem/HealthView.cs"
+"Assets/Scripts/HealthSystem/SmoothBarHealthDisplay/SmoothBarHealthDisplay.cs"
 "Assets/Scripts/Other/Spawner.cs"
 "Assets/Scripts/Player/InspectorHardSurface.cs"
 "Assets/Scripts/Player/ItemCollector.cs"
