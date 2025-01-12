@@ -8,6 +8,7 @@ public class PlayerMover : MonoBehaviour
 
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _jumpForce;
+    [SerializeField] private SmoothBarHealthDisplay _healthDisplay;
 
     private Animator _playerAnimation;
     private Rigidbody2D _playerRigidbody;
@@ -61,10 +62,12 @@ public class PlayerMover : MonoBehaviour
         if (value > 0)
         {
             transform.localRotation = Quaternion.Euler(0, 0, 0);
+            _healthDisplay.transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
         else if (value < 0)
         {
             transform.localRotation = Quaternion.Euler(0, 180, 0);
+            _healthDisplay.transform.localRotation = Quaternion.Euler(0, 180, 0);
         }
     }
 }
