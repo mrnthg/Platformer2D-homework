@@ -12,7 +12,7 @@ public class EnemyPartol : MonoBehaviour
     private DetectorPlayer _detectorPlayer;
     private Transform _playerPosition;
     private EnemyPursuit _enemyPursuit;
-    private FlipObjectRotation _flipObjectRotation;
+    private EnemyFlipRotation _flipObjectRotation;
     private bool _isPartol = true;
 
     public event Action OnPatrol;
@@ -21,7 +21,7 @@ public class EnemyPartol : MonoBehaviour
     {
         _detectorPlayer = GetComponent<DetectorPlayer>();
         _enemyPursuit = GetComponent<EnemyPursuit>();
-        _flipObjectRotation = GetComponent<FlipObjectRotation>(); 
+        _flipObjectRotation = GetComponent<EnemyFlipRotation>(); 
 
          _playerPosition = _detectorPlayer.Detection();
     }

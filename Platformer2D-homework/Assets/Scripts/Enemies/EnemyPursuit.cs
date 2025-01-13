@@ -7,7 +7,7 @@ public class EnemyPursuit : MonoBehaviour
     [SerializeField] private float _moveSpeedPursuit;
 
     private DetectorPlayer _detectorPlayer;
-    private FlipObjectRotation _flipObjectRotation;
+    private EnemyFlipRotation _flipObjectRotation;
     private bool _isPursuit = false;
 
     public bool IsPursuit => _isPursuit;
@@ -15,7 +15,7 @@ public class EnemyPursuit : MonoBehaviour
     private void Start()
     {
         _detectorPlayer = GetComponent<DetectorPlayer>();
-        _flipObjectRotation = GetComponent<FlipObjectRotation>();
+        _flipObjectRotation = GetComponent<EnemyFlipRotation>();
     }
 
     private void FixedUpdate()

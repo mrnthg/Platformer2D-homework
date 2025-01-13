@@ -8,8 +8,8 @@ public class PlayerMover : MonoBehaviour
 
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _jumpForce;
-    [SerializeField] private SmoothBarHealthDisplay _healthDisplay;
 
+    private PlayerFlipRotation _flipObjectRotation;
     private Animator _playerAnimation;
     private Rigidbody2D _playerRigidbody;
     private InspectorHardSurface _checkHardSurface;
@@ -21,6 +21,7 @@ public class PlayerMover : MonoBehaviour
         _playerAnimation = GetComponent<Animator>();
         _playerRigidbody = GetComponent<Rigidbody2D>();
         _checkHardSurface = GetComponent<InspectorHardSurface>();
+        _flipObjectRotation = GetComponent<PlayerFlipRotation>();
     }
 
     private void Update()
@@ -43,7 +44,7 @@ public class PlayerMover : MonoBehaviour
     {        
         _playerAnimation.SetFloat(PlayerAnimatorData.Parameters.Speed, Mathf.Abs(horizontalImput));
 
-        FlipPlayerRotation(horizontalImput);
+        _flipObjectRotation.FlipPlayerRotation(horizontalImput);
 
         _playerRigidbody.velocity = new Vector2(horizontalImput * _moveSpeed, _playerRigidbody.velocity.y);
     }
@@ -54,20 +55,6 @@ public class PlayerMover : MonoBehaviour
         {         
             _playerRigidbody.velocity = new Vector2(_playerRigidbody.velocity.x, _jumpForce);
             _isJump = false;
-        }
-    }
-
-    private void FlipPlayerRotation(float value)
-    {
-        if (value > 0)
-        {
-            transform.localRotation = Quaternion.Euler(0, 0, 0);
-            _healthDisplay.transform.localRotation = Quaternion.Euler(0, 0, 0);
-        }
-        else if (value < 0)
-        {
-            transform.localRotation = Quaternion.Euler(0, 180, 0);
-            _healthDisplay.transform.localRotation = Quaternion.Euler(0, 180, 0);
         }
     }
 }

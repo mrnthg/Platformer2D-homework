@@ -391,9 +391,9 @@
 "Assets/Scripts/DiamondSpawner/DiamondSpawner.cs"
 "Assets/Scripts/Enemies/DetectorPlayer.cs"
 "Assets/Scripts/Enemies/EnemyBattler.cs"
+"Assets/Scripts/Enemies/EnemyFlipRotation.cs"
 "Assets/Scripts/Enemies/EnemyPartol.cs"
 "Assets/Scripts/Enemies/EnemyPursuit.cs"
-"Assets/Scripts/Enemies/FlipObjectRotation.cs"
 "Assets/Scripts/HealthSystem/HealthSystem.cs"
 "Assets/Scripts/HealthSystem/HealthView.cs"
 "Assets/Scripts/HealthSystem/SmoothBarHealthDisplay/SmoothBarHealthDisplay.cs"
@@ -402,6 +402,7 @@
 "Assets/Scripts/Player/ItemCollector.cs"
 "Assets/Scripts/Player/PlayerAnimatorData.cs"
 "Assets/Scripts/Player/PlayerBattler.cs"
+"Assets/Scripts/Player/PlayerFlipRotation.cs"
 "Assets/Scripts/Player/PlayerMover.cs"
 -langversion:9.0
 

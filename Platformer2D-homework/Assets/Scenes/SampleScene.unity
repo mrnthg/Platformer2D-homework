@@ -7077,6 +7077,7 @@ GameObject:
   - component: {fileID: 2099439374}
   - component: {fileID: 2099439372}
   - component: {fileID: 2099439378}
+  - component: {fileID: 2099439379}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -7294,7 +7295,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 5
   _jumpForce: 12
-  _healthDisplay: {fileID: 1975667154}
 --- !u!114 &2099439378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7307,6 +7307,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d063723bb5e64e448a168ddd7679432e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2099439379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099439366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af7758a7636f61843aa8af5b6becfe3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthDisplay: {fileID: 1975667154}
 --- !u!1 &2112888532
 GameObject:
   m_ObjectHideFlags: 0
