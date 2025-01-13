@@ -2,9 +2,9 @@ using UnityEngine;
 
 public abstract class HealthView : MonoBehaviour
 {
-    [SerializeField] protected HealthSystem _healthSystem;
+    [SerializeField] protected HealthInstaller _healthSystem;
 
-    public abstract HealthSystem HealthSystem { get; }
+    public abstract HealthInstaller HealthSystem { get; }
 
     protected abstract void SetHealth();
 }

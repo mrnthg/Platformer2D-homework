@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class ItemCollector : MonoBehaviour
 {
-    private HealthSystem _healthSystem;
+    private HealthInstaller _healthSystem;
 
     private void Awake()
     {
-        _healthSystem = GetComponent<HealthSystem>();
+        _healthSystem = GetComponent<HealthInstaller>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

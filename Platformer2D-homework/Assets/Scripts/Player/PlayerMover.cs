@@ -44,7 +44,7 @@ public class PlayerMover : MonoBehaviour
     {        
         _playerAnimation.SetFloat(PlayerAnimatorData.Parameters.Speed, Mathf.Abs(horizontalImput));
 
-        _flipObjectRotation.FlipPlayerRotation(horizontalImput);
+        _flipObjectRotation.Flip(horizontalImput);
 
         _playerRigidbody.velocity = new Vector2(horizontalImput * _moveSpeed, _playerRigidbody.velocity.y);
     }

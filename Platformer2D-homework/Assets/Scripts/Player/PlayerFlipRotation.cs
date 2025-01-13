@@ -4,17 +4,13 @@ public class PlayerFlipRotation : MonoBehaviour
 {
     [SerializeField] private SmoothBarHealthDisplay _healthDisplay;
 
-    public void FlipPlayerRotation(float value)
+    private float _rotationY;
+
+    public void Flip(float value)
     {
-        if (value > 0)
-        {
-            transform.localRotation = Quaternion.Euler(0, 0, 0);
-            _healthDisplay.transform.localRotation = Quaternion.Euler(0, 0, 0);
-        }
-        else if (value < 0)
-        {
-            transform.localRotation = Quaternion.Euler(0, 180, 0);
-            _healthDisplay.transform.localRotation = Quaternion.Euler(0, 180, 0);
-        }
+        _rotationY = value > 0 ? 0 : 180;
+
+        transform.localRotation = Quaternion.Euler(0, _rotationY, 0);
+        _healthDisplay.transform.localRotation = Quaternion.Euler(0, _rotationY, 0);
     }
 }

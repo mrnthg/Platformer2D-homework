@@ -394,7 +394,7 @@
 "Assets/Scripts/Enemies/EnemyFlipRotation.cs"
 "Assets/Scripts/Enemies/EnemyPartol.cs"
 "Assets/Scripts/Enemies/EnemyPursuit.cs"
-"Assets/Scripts/HealthSystem/HealthSystem.cs"
+"Assets/Scripts/HealthSystem/HealthInstaller.cs"
 "Assets/Scripts/HealthSystem/HealthView.cs"
 "Assets/Scripts/HealthSystem/SmoothBarHealthDisplay/SmoothBarHealthDisplay.cs"
 "Assets/Scripts/Other/Spawner.cs"

@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(PlayerBattler), typeof(HealthSystem))]
+[RequireComponent(typeof(PlayerBattler), typeof(HealthInstaller))]
 public class PlayerBattler : MonoBehaviour
 {
     [SerializeField] private Text _healthOnScreen;
@@ -13,11 +13,11 @@ public class PlayerBattler : MonoBehaviour
     [SerializeField] private float _attackCoolDown;
 
     private bool _isAttack = false;
-    private HealthSystem _healthSystem;
+    private HealthInstaller _healthSystem;
 
     private void Start()
     {
-        _healthSystem = GetComponent<HealthSystem>();
+        _healthSystem = GetComponent<HealthInstaller>();
     }
 
     private void Update()
@@ -41,7 +41,7 @@ public class PlayerBattler : MonoBehaviour
 
         for (int i = 0; i < enemies.Length; i++)
         {
-            if (enemies[i].TryGetComponent(out HealthSystem healthSystem))
+            if (enemies[i].TryGetComponent(out HealthInstaller healthSystem))
             {
                 healthSystem.SubtractHealthPoint(_damage);
             }

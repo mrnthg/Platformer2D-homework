@@ -7,7 +7,7 @@ public class SmoothBarHealthDisplay : HealthView
     [SerializeField] private Slider _healthSlider;
     [SerializeField, Min(1f)] private float _lerpSpeed;
 
-    public override HealthSystem HealthSystem
+    public override HealthInstaller HealthSystem
     {
         get
         {
